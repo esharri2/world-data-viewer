@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
+    "d3": "^5.5.0",
     "whatwg-fetch": "^2.0.4"
   }
 }
