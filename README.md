@@ -1,12 +1,9 @@
-# Modern JS Boilerplate
+# World Bank Data Viewer
 
-This is a dead simple, modern web development setup.
+##WIP!
 
-My goal was to:
-- Implement compling and polyfills to get the latest and greatest JS features
-- Use a dev server that restarts when a change to the code base is saved
-- Add SASS
+A tool to generate svg line charts of World Bank data.
 
-That's about it. 
+Built with d3.js.
 
-Clone it, run `npm install`, and run `npm start` to start it on `http://localhost:8080/`.
+
