@@ -4,23 +4,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-
-  <title>Modern JS Setup</title>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.12/js/all.js" integrity="sha384-Voup2lBiiyZYkRto2XWqbzxHXwzcm4A5RfdfG6466bu5LqjwwrjXCMBQBLMWh7qR"
+    crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400" rel="stylesheet">
+  <title>World Bank Data Viewer</title>
 </head>
 
 <body>
-  <h1>Modern JS Setup</h1>
+  <header>
+    <h1>World Bank Data Viewer</h1>
+    <p>Choose a topic area, a country, and indicator to see a line graph of the data between 2000 and 2017.</p>
+  </header>
   <div class="form-container container">
     <form id="params">
-      <select id="topic" name="topic"></select>
-      <select id="country" name="country"></select>
-      <select id="indicator" name="indicator"></select>
+      <div>
+        <label for="topic">Topic: </label>
+        <select id="topic" name="topic"></select>
+      </div>
+      <div>
+        <label for="country">Country: </label>
+        <select id="country" name="country"></select>
+      </div>
+      <div>
+        <label for="indicator">Indicator: </label>
+        <select id="indicator" name="indicator"></select>
+      </div>
       <button id="submit" value="View">View</button>
     </form>
   </div>
   <div class="chart-container container">
 
   </div>
+  <button aria-label="scroll to top" class="up">
+    <i class="fas fa-2x fa-angle-double-up"></i>
+  </button>
 </body>
 
 <noscript>Sorry, your browser does not support JavaScript.</noscript>

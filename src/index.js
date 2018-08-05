@@ -27,17 +27,21 @@ async function addIndicators(topicId) {
 }
 
 document.querySelector("#submit").addEventListener("click", function (event) {
-    event.preventDefault();
+    event.preventDefault();    
     const country = document.querySelector("#country").value;
     const indicator = document.querySelector("#indicator").value;
     getChartData(country, indicator);
-
+    //scroll to first chart on page.
 })
 
 async function getChartData(country, indicator) {
     const data = await chartData(country, indicator);
     createChart(data);
 }
+
+//FOR TESTING
+// getChartData();
+
 
 addTopics();
 addCountries();
