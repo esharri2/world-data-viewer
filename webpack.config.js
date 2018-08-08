@@ -2,9 +2,11 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
+const polyfills = ["babel-polyfill", "whatwg-fetch", "smoothscroll-polyfill"]
+
 module.exports = {
   mode: 'development',
-  entry: ["babel-polyfill", "whatwg-fetch", './src/index.js'],
+  entry: [...polyfills, './src/index.js'],
   plugins: [
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({ template: 'src/index.html' })

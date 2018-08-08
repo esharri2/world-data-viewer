@@ -15,7 +15,7 @@ async function addTopics() {
 
 async function addCountries() {
     const data = await countries();
-    const markup = data[1].map(country => `<option value=${country.id}>${country.name}</option>`);
+    const markup = data.map(country => `<option value=${country.id}>${country.name}</option>`);
     const countriesMenu = document.querySelector("#country")
     countriesMenu.innerHTML = markup;
 }
@@ -26,12 +26,22 @@ async function addIndicators(topicId) {
     document.querySelector("#indicator").innerHTML = markup;
 }
 
-document.querySelector("#submit").addEventListener("click", function (event) {
-    event.preventDefault();    
+document.querySelector("#submit").addEventListener("click", event => {
+    event.preventDefault();
     const country = document.querySelector("#country").value;
     const indicator = document.querySelector("#indicator").value;
     getChartData(country, indicator);
     //scroll to first chart on page.
+    if (document.querySelector(".chart-container")) {
+        const chartTop = document.querySelector(".chart-container").getBoundingClientRect().top;
+        window.scrollTo({
+            top: chartTop,
+            behavior: "smooth"
+        });
+    }
+    
+    
+
 })
 
 async function getChartData(country, indicator) {
@@ -40,8 +50,27 @@ async function getChartData(country, indicator) {
 }
 
 //FOR TESTING
-// getChartData();
+getChartData();
 
 
-addTopics();
-addCountries();
+// addTopics();
+// addCountries();
+scrollUpButton();
+
+function scrollUpButton() {
+    const up = document.querySelector(".up");
+    window.addEventListener("scroll", event => {
+        if (document.scrollingElement.scrollTop > 150) {
+            up.style.display = 'block';
+        } else {
+            up.style.display = 'none';
+        }
+    })
+
+    document.querySelector(".up").addEventListener("click", event => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    })
+}

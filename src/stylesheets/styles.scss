@@ -1,6 +1,12 @@
 @import './reset';
 $title-font: 'Roboto',
 sans-serif;
+$gray: #DADAD9;
+$black: #36382E;
+$dark-accent: #F06449;
+$light-accent: #5BC3EB;
+
+
 $base-font-size: 18px;
 %centered-column {
     display: flex;
@@ -16,6 +22,7 @@ body {
     margin: 0 auto;
     padding: 0 10px;
     overflow-y:scroll;
+    // scroll-behavior: smooth;
 }
 
 .container {
@@ -55,7 +62,7 @@ form {
     button {
         background-color:white;
         outline: 0;
-        border: solid 1px lightgray;
+        border: solid 1px $gray;
         font-family: $title-font;
         width:100%;
         margin-top:10px;
@@ -64,13 +71,13 @@ form {
          button:hover {
              border-color:black;
          }
- 
-}
+ }
 
 h2 {
     font-size: 20px;
-    font-weight: 100;
+    font-weight: 200;
     font-family: $title-font;
+    padding: 7px 0;
 }
 
 .up {
@@ -78,16 +85,37 @@ h2 {
     bottom: 6px;
     right: 6px; 
     border-radius:50%;
-    background-color: blue;    
+    background-color: $light-accent;    
     border: none;
     color:white;
     height:50px;
     width:50px;
-    // display:none;
+    display:none;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 }
 
 .up:hover, .up:focus {
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.25), 0 5px 6px rgba(0,0,0,0.22);
+}
+
+.noData {
+    color:$dark-accent;
+    text-align:center;
+    display:block;
+    padding:60px 0;
+}
+
+.dot {
+    fill: $dark-accent;
+    stroke: $dark-accent;
+    stroke-width: 1.5px;
+}
+
+.line {
+    fill:none;
+    stroke:$dark-accent;
+    stroke-linejoin: "round";
+    stroke-linecap: "round";
+    stroke-width: 1.5
 }
