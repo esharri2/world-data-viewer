@@ -19,17 +19,18 @@
     <form id="params">
       <div>
         <label for="topic">Topic: </label>
-        <select id="topic" name="topic"></select>
+        <select required id="topic" name="topic">
+        </select>
       </div>
       <div>
         <label for="country">Country: </label>
-        <select id="country" name="country"></select>
+        <select required id="country" name="country"></select>
       </div>
       <div>
         <label for="indicator">Indicator: </label>
-        <select id="indicator" name="indicator"></select>
+        <select required id="indicator" name="indicator"></select>
       </div>
-      <button id="submit" value="View">View</button>
+      <button id="submit" type="submit" disabled value="View">View</button>
     </form>
   </div>
   <div class="chart-container container">

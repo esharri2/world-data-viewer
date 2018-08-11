@@ -3,10 +3,24 @@ import 'whatwg-fetch';
 import { topics, indicators, countries, chartData } from './fetches';
 import createChart from './createChart';
 
+//Enable submit button when all select elements have a value
+document.body.addEventListener("change", function () {
+    let completeForm = true;
+    const inputs = document.querySelectorAll("select");
+    inputs.forEach(input => {
+        if (!input.value) {
+            completeForm = false;
+        }
+    })
+    if (completeForm) {
+        document.querySelector("#submit").disabled = false;
+    }
+})
 
 async function addTopics() {
     const data = await topics();
     const markup = data[1].map(topic => `<option value=${topic.id}>${topic.value}</option>`);
+    markup.unshift(`<option value="" selected disabled hidden>Select a topic</option>`);
     const topicMenu = document.querySelector("#topic")
     topicMenu.innerHTML = markup;
     topicMenu.addEventListener("change", function () {
@@ -17,6 +31,7 @@ async function addTopics() {
 async function addCountries() {
     const data = await countries();
     const markup = data.map(country => `<option value=${country.id}>${country.name}</option>`);
+    markup.unshift(`<option value="" selected disabled hidden>Select a country</option>`);
     const countriesMenu = document.querySelector("#country")
     countriesMenu.innerHTML = markup;
 }
@@ -29,33 +44,29 @@ async function addIndicators(topicId) {
 
 document.querySelector("#submit").addEventListener("click", event => {
     event.preventDefault();
-    const country = document.querySelector("#country").value;
-    const indicator = document.querySelector("#indicator").value;
+    const countryEl = document.querySelector("#country")
+    const indicatorEl = document.querySelector("#indicator")
+    const country = countryEl.value;
+    const indicator = indicatorEl.value;
     getChartData(country, indicator);
-    //scroll to first chart on page.
-    if (document.querySelector(".chart-container")) {
-        const chartTop = document.querySelector(".chart-container").getBoundingClientRect().top;
-        window.scrollTo({
-            top: chartTop,
-            behavior: "smooth"
-        });
-    }
-    
-    
-
 })
+
+document.querySelector(".chart-container").scrollIntoView({ behavior: "smooth", block: "center" })
+
 
 async function getChartData(country, indicator) {
     const data = await chartData(country, indicator);
-    createChart(data);
+    createChart(data, function () {
+        document.querySelector(".chart-container").scrollIntoView({ behavior: "smooth", block: "start" })
+    });
 }
 
 //FOR TESTING
-getChartData();
+// getChartData();
 
 
-// addTopics();
-// addCountries();
+addTopics();
+addCountries();
 scrollUpButton();
 
 function scrollUpButton() {

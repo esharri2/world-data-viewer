@@ -1,6 +1,10 @@
 import * as d3 from "d3";
+import d3Tip from "d3-tip";
+import { callbackify } from "util";
+d3.tip = d3Tip;
 
-export default function (data) {
+
+export default function (data, callback) {
 
     //Add title, using indicator name
     const chart = d3.select('.chart-container').insert("div", ":first-child").attr("class", "chart")
@@ -59,16 +63,16 @@ export default function (data) {
             const jsonEl = this.closest(".chart").querySelector(".json");
             if (jsonEl) {
                 jsonEl.remove();
-                svg.style("display","block").transition().style("opacity",1);
+                svg.style("display", "block").transition().style("opacity", 1);
                 this.classList.remove("on");
             } else {
                 this.classList.add("on");
-                svg.transition().style("opacity",0).on("end",function(){
-                    svg.style("display","none");
+                svg.transition().style("opacity", 0).on("end", function () {
+                    svg.style("display", "none");
                     chart.append("div").attr("class", "json").append("code").text(JSON.stringify(sortedData, null, 2))
-                });            
+                });
             }
-          
+
         })
 
         //SCALE for X
@@ -116,9 +120,6 @@ export default function (data) {
             .attr("d", line)//end
 
         var totalLength = path.node().getTotalLength();
-        console.log(totalLength)
-
-
 
         path
             .attr("stroke-dasharray", totalLength + " " + totalLength)
@@ -128,15 +129,24 @@ export default function (data) {
             .ease(d3.easeLinear)
             .attr("stroke-dashoffset", 0);
 
+        const tip = d3.tip()
+            .attr('class', 'd3-tip')
+            .offset([-10, 0])
+            .html(d => `<span class='tip'>${d.value.toLocaleString()}</span>`);
+
+        svg.call(tip);
+
         //Add dots where line meets
         lineGroup.selectAll(".dot")
-            .data(sortedData.filter(function (d) { return d.value; }))
+            .data(sortedData.filter(d => d.value))
             .enter().append("circle")
             .attr("class", "dot")
             .attr("cx", line.x())
             .attr("cy", line.y())
-            .attr("r", 2.5);
-
+            .attr("r", 2.5)
+            .on('mouseover', tip.show)
+            .on('mouseout', tip.hide)
+callback();
 
 
     }

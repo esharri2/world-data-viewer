@@ -25,8 +25,8 @@ export const countries = () =>
 
 
 export const chartData = (country, indicator) => {
-    // const url = `${endpoint}/countries/${country}/indicators/${indicator}?format=json&per_page=500&date=2000:2017`
-    const url = "http://api.worldbank.org/v2/countries/br/indicators/NY.GDP.MKTP.CD?format=json&date=2000:2017";
+    const url = `${endpoint}/countries/${country}/indicators/${indicator}?format=json&per_page=500&date=2000:2017`
+    // const url = "http://api.worldbank.org/v2/countries/br/indicators/NY.GDP.MKTP.CD?format=json&date=2000:2017";
 
     return fetch(url)
         .then(response => response.json())

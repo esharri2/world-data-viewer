@@ -35,6 +35,7 @@ body {
 
 .chart {
     width:100%;
+    padding: 10px 0;
 }
 
 .chartSvg {
@@ -89,7 +90,15 @@ form {
         margin-top: 10px;
         padding: 5px;       
     }
-    button:hover {
+
+    button:enabled {
+        border: solid 1px $light-accent;
+    }
+
+    button:disabled:hover {
+        cursor: not-allowed;
+    }
+    button:enabled:hover {
         border-color: black;
     }
 }
@@ -175,4 +184,12 @@ h2 {
 .showJson.on {
     background-color:$gray;
 
+}
+
+
+.tip {
+    font-size:14px;
+    font-family: $title-font;
+    background-color:white;
+    opacity:.8;
 }
