@@ -3,6 +3,7 @@ import 'whatwg-fetch';
 import { topics, indicators, countries, chartData } from './fetches';
 import createChart from './createChart';
 
+
 async function addTopics() {
     const data = await topics();
     const markup = data[1].map(topic => `<option value=${topic.id}>${topic.value}</option>`);
