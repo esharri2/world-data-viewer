@@ -13,6 +13,10 @@ $base-font-size: 18px;
     align-items:center;
 }
 
+* {
+   transition: all 0.2s ease;  
+  }
+
 
 body {
     font-family: $title-font;
@@ -92,15 +96,18 @@ form {
     }
 
     button:enabled {
-        border: solid 1px $light-accent;
+        border: solid 1px $dark-accent;
+        color:$dark-accent;
+    }
+    button:enabled:hover {
+        background-color:$dark-accent;
+        color:white;
     }
 
     button:disabled:hover {
         cursor: not-allowed;
     }
-    button:enabled:hover {
-        border-color: black;
-    }
+  
 }
 
 h2 {

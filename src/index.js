@@ -38,7 +38,11 @@ async function addCountries() {
 
 async function addIndicators(topicId) {
     const data = await indicators(topicId);
-    const markup = data[1].map(indicator => `<option value=${indicator.id}>${indicator.name}</option>`);
+    const markup = data[1].map(indicator => {
+        if (!indicator.name.includes("Barro-Lee")) {
+            return `<option value=${indicator.id}>${indicator.name}</option>`
+        }
+    });
     document.querySelector("#indicator").innerHTML = markup;
 }
 

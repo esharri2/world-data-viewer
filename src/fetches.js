@@ -7,7 +7,7 @@ export const topics = () =>
         .catch(error => console.error(`Fetch Error =\n`, error));
 
 export const indicators = (id) =>
-    fetch(`${endpoint}/topics/${id}/indicators?format=json&per_page=100`)
+    fetch(`${endpoint}/topics/${id}/indicators?format=json&per_page=500`)
         .then(response => response.json())
         .then(response => response)
         .catch(error => console.error(`Fetch Error =\n`, error));
