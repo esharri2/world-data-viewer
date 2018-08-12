@@ -76,8 +76,8 @@ export default function (data, callback) {
         })
 
         //SCALE for X
-        const x = d3.scaleLinear()
-            .domain([2000, 2017])
+        const x = d3.scaleTime()
+            .domain([new Date(2000, 1, 1), new Date(2017, 1, 1)])
             .range([0, svgWidth - margin.left * 2])
 
         //SCALE for Y
@@ -86,7 +86,7 @@ export default function (data, callback) {
             .range([svgHeight - margin.top - margin.bottom, 0])
 
         //AXES
-        var x_axis = d3.axisBottom().scale(x);
+        var x_axis = d3.axisBottom().scale(x);        
         var y_axis = d3.axisLeft().scale(y);
 
         //ADD X AXIS
