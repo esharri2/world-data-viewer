@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.12/js/all.js" integrity="sha384-Voup2lBiiyZYkRto2XWqbzxHXwzcm4A5RfdfG6466bu5LqjwwrjXCMBQBLMWh7qR"
+    crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400" rel="stylesheet">
+  <title>World Bank Data Viewer</title>
+</head>
+
+<body>
+  <header>
+    <h1>World Bank Data Viewer</h1>
+    <p>Choose a topic area, a country, and indicator to see a line graph of the data between 2000 and 2017.</p>
+  </header>
+  <div class="form-container container">
+    <form id="params">
+      <div>
+        <label for="topic">Topic: </label>
+        <select required id="topic" name="topic">
+        </select>
+      </div>
+      <div>
+        <label for="country">Country: </label>
+        <select required id="country" name="country"></select>
+      </div>
+      <div>
+        <label for="indicator">Indicator: </label>
+        <select required id="indicator" name="indicator"></select>
+      </div>
+      <button id="submit" type="submit" disabled value="View">View data</button>
+    </form>
+  </div>
+  <div class="chart-container container">
+
+  </div>
+  <button aria-label="scroll to top" class="up">
+    <i class="fas fa-2x fa-angle-double-up"></i>
+  </button>
+<script type="text/javascript" src="main.bundle.js"></script></body>
+
+<noscript>Sorry, your browser does not support JavaScript.</noscript>
+
+</html>
