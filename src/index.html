@@ -20,15 +20,20 @@
       <div>
         <label for="topic">Topic: </label>
         <select required id="topic" name="topic">
+          <option>Loading topics...</option>
         </select>
       </div>
       <div>
         <label for="country">Country: </label>
-        <select required id="country" name="country"></select>
+        <select required id="country" name="country">
+            <option>Loading countries...</option>
+        </select>
       </div>
       <div>
         <label for="indicator">Indicator: </label>
-        <select required id="indicator" name="indicator"></select>
+        <select required id="indicator" name="indicator">
+            <option>Choose a topic to see indicators</option>
+        </select>
       </div>
       <button id="submit" type="submit" disabled value="View">View data</button>
     </form>
